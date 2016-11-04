@@ -1,8 +1,11 @@
 <body>
   <div class="container">
     <div class="row top-bar">
-      <div class="col-12-md ">
+      <div class="col-md-10 ">
         <h1>MakerMex</h1>
+      </div>
+      <div class="col-md-2">
+         {{> loginButtons}}
       </div>
     </div>
     <div class="row stats-bar">
@@ -19,15 +22,15 @@
         <h1>Level</h1>
       </div>
     </div>
-    <div class="container-fluid">
       <div class="row">
+
     <div class="task-column col-md-3 todos">
         <h1>HABITS</h1>
-
-    <form class="new-task">
-      <input type="text" name="text" placeholder="Add new TO-DO"/>
-    </form>
-
+        {{#if currentUser}}
+          <form class="new-task">
+            <input type="text" name="text" placeholder="Add new Habit"/>
+          </form>
+        {{/if}}
         <ul>
           {{#each tasks}}
             {{> task}}
@@ -36,10 +39,16 @@
       </div>
       <div class="task-column col-md-3 dailies">
           <h1>DAILIES</h1>
-
-      <form class="new-task">
-        <input type="text" name="text" placeholder="Add new TO-DO"/>
-      </form>
+          <h1>Daily left: ({{incompleteCount}})</h1>
+          <label class ="hide-completed">
+            <input type="checkbox" />
+            Hide completed Dailies
+          </label>
+            {{#if currentUser}}
+              <form class="new-task">
+                <input type="text" name="text" placeholder="Add new DAILY"/>
+              </form>
+            {{/if}}
 
           <ul>
             {{#each tasks}}
@@ -49,11 +58,16 @@
         </div>
         <div class="task-column col-md-3 dailies">
             <h1>TODOS</h1>
-
-        <form class="new-task">
-          <input type="text" name="text" placeholder="Add new TO-DO"/>
-        </form>
-
+            <h1>Todo left ({{incompleteCount}})</h1>
+            <label class ="hide-completed">
+              <input type="checkbox" />
+              Hide completed Todos
+            </label>
+            {{#if currentUser}}
+              <form class="new-task">
+                <input type="text" name="text" placeholder="Add new TO-DO"/>
+              </form>
+            {{/if}}
             <ul>
               {{#each tasks}}
                 {{> task}}
@@ -62,10 +76,11 @@
           </div>
           <div class="task-column col-md-3 dailies">
               <h1>REWARDS</h1>
-
-          <form class="new-task">
-            <input type="text" name="text" placeholder="Add new TO-DO"/>
-          </form>
+              {{#if currentUser}}
+                <form class="new-task">
+                  <input type="text" name="text" placeholder="Add new REWARD"/>
+                </form>
+              {{/if}}
 
               <ul>
                 {{#each tasks}}
@@ -75,8 +90,4 @@
             </div>
   </div>
 </div>
-</div>
 </body>
-<template name="task">
-  <li>{{text}} , Exp: {{exp}} , Gold: {{gold}} , Damage: {{dmge}}</li>
-</template>

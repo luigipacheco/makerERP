@@ -30,11 +30,12 @@ body {
 }
 
 .task-column {
-  padding: 5px;
-  margin: 0px ;
-  min-height: 100%;
+  padding: 25px;
+  margin: 0px auto ;
   background: darkgray;
   outline: 1px solid #222222;
+  border-image: url("images/a6a6a6.png");
+
 }
 
 header {
