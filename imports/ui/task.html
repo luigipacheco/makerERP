@@ -1,6 +1,6 @@
 <template name="task">
   <li class="{{#if checked}}checked{{/if}}">
-    {{#if user isInRole 'admin'}}
+    {{#if isInRole 'admin'}}
     <button class ="delete">&times;</button>
     {{/if}}
       <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
