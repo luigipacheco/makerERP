@@ -1,3 +1,79 @@
+<template name="datos">
+  <div class="row stats-bar">
+      <div class="col-md-2 hp-bar">
+        <h1>Hp {{HP}}</h1>
+      </div>
+      <div class="col-md-2 exp-bar">
+        <h1>Exp {{exp}}</h1>
+      </div>
+      <div class="col-md-2 gold-bar">
+        <h1>Gold {{gold}}</h1>
+      </div>
+      <div class="col-md-2 level-bar">
+        <h1>Level {{level}}</h1>
+      </div>
+    </div>
+</template>
+
+<template name="habit">            
+            <form class="new-task" id="habit-form">
+            <input type="text" name="s_habit_text" id="s_habit_text" placeholder="Add new Habit"/>
+          </form>
+  <form class="task-numbers">
+    <div class="form-group">
+      <div class="col-sm-4" >
+        <input type="number" name="i_habit_exp" id="i_habit_exp" min="0" max="100" step="10" placeholder="EXP"/>
+      </div>
+      <div class="col-sm-4">
+        <input type="number" name="i_habit_gold" id="i_habit_gold" min="0" max="200" step="5" placeholder="Gold"/>
+      </div>
+      <div class="col-sm-4">
+        <input type="number" name="i_habit_DMG" id="i_habit_DMG" min="0" max="100" step="10" placeholder="Dmge"/>
+      </div>
+    </div>
+    </form>
+</template>
+
+<template name="daily"> 
+              <form class="new-task" id="dayli-form">
+                <input type="text" name="texto" id="texto" placeholder="Add new DAILY"/>
+              </form>  
+              <form class="task-numbers">
+                <div class="form-group">
+                  <div class="col-sm-4" >
+                    <input type="number" name="exp" id="exp" min="0" max="100" step="10" value="0" placeholder="EXP" />
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="number" name="gold" id="gold" min="0" max="200" step="5" value="0" placeholder="Gold" />
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="number" name="DMG" id="DMG" min="0" max="100" step="10" value="0" placeholder="DMG" /> 
+                  </div>
+                </div>
+              </form>
+</template>
+
+<template name="todo"> 
+                       
+              <form class="new-task" id="todos-form">
+                <input type="text" name="texto1" id="texto1" placeholder="Add new DAILY"/>
+              </form>  
+              <form class="new-task">
+                EXP:<input type="number" name="exp1" id="exp1" min="0" max="100" step="10" value="0"/>
+                Gold:<input type="number" name="gold1" id="gold1" min="0" max="200" step="5" value="0"/>
+                DMG:<input type="number" name="DMG1" id="DMG1" min="0" max="100" step="10" value="0"/>
+            </form>
+</template>
+
+<template name="reward"> 
+              <form class="new-task" id="rewards-form">
+                <input type="text" name="texto2" id="texto2" placeholder="Add new DAILY"/>
+              </form>  
+              <form class="new-task">
+                Gold:<input type="number" name="i_reward_gold" id="i_reward_gold" min="0" max="200" step="5" value="0"/>
+              </form>
+</template>
+
 <body>
   <div class="container">
     <div class="row top-bar">
@@ -8,32 +84,21 @@
          {{> loginButtons}}
       </div>
     </div>
-    <div class="row stats-bar">
-      <div class="col-md-2 hp-bar">
-        <h1>Hp</h1>
-      </div>
-      <div class="col-md-2 exp-bar">
-        <h1>Exp</h1>
-      </div>
-      <div class="col-md-2 gold-bar">
-        <h1>Gold</h1>
-      </div>
-      <div class="col-md-2 level-bar">
-        <h1>Level</h1>
-      </div>
-    </div>
+        {{> datos}}
       <div class="row">
 
     <div class="task-column col-md-3 todos">
         <h1>HABITS</h1>
         {{#if currentUser}}
-          <form class="new-task">
-            <input type="text" name="text" placeholder="Add new Habit"/>
-          </form>
+
+        {{> habit}}
+
         {{/if}}
+        <br>
+        <br>
         <ul>
           {{#each tasks}}
-            {{> task}}
+            {{> thabit}}
           {{/each}}
         </ul>
       </div>
@@ -45,14 +110,13 @@
             Hide completed Dailies
           </label>
             {{#if currentUser}}
-              <form class="new-task">
-                <input type="text" name="text" placeholder="Add new DAILY"/>
-              </form>
+              {{> daily}}
             {{/if}}
-
           <ul>
-            {{#each tasks}}
-              {{> task}}
+            {{#each daylis}}
+
+              {{> tdaily}}
+
             {{/each}}
           </ul>
         </div>
@@ -64,30 +128,31 @@
               Hide completed Todos
             </label>
             {{#if currentUser}}
-              <form class="new-task">
-                <input type="text" name="text" placeholder="Add new TO-DO"/>
-              </form>
+              {{> todo}}
             {{/if}}
             <ul>
-              {{#each tasks}}
-                {{> task}}
+              {{#each todos}}
+
+                {{> ttodos}}
+
               {{/each}}
             </ul>
           </div>
           <div class="task-column col-md-3 dailies">
               <h1>REWARDS</h1>
               {{#if currentUser}}
-                <form class="new-task">
-                  <input type="text" name="text" placeholder="Add new REWARD"/>
-                </form>
+                {{> reward}}
               {{/if}}
 
               <ul>
-                {{#each tasks}}
-                  {{> task}}
+                {{#each rewards}}
+
+                  {{> trewards}}
+
                 {{/each}}
               </ul>
             </div>
   </div>
 </div>
 </body>
+
