@@ -1,7 +1,7 @@
 import {Accounts} from 'meteor/accounts-base';
 import '../imports/api/tasks.js'
-
-//create an admin user when the server starts
+//testing
+//create an admin user when the server starts if the admin user does not exists
 if (!(Meteor.users.findOne({username: "admin"}))) {
   Accounts.createUser({
                               username: "admin",
