@@ -14,5 +14,6 @@ if (!(Meteor.users.findOne({username: "admin"}))) {
   var adminuser = Accounts.findUserByUsername("admin")._id;
 
   Roles.addUsersToRoles( adminuser, ['admin'] );
+  console.log("added admin user");
 
 };
